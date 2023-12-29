@@ -80,6 +80,23 @@ $header ->render();
                 return $this->longDescription;
             }
         }
+        class DiscountedProductpria extends Productpria
+        {
+            // Encapsulated untuk diskon
+            private $discountPercentage = 0.10;  // discount 10%
+        
+            // untuk menerapkan fungsi
+            public function getPrice()
+            {
+                return parent::getPrice() * (1 - $this->discountPercentage);
+            }
+        
+            // diskon berapa persen
+            public function setDiscountPercentage($percentage)
+            {
+                $this->discountPercentage = $percentage;
+            }
+        }
 
         // Mendefinisikan kelas ProductpriaRepository
         class ProductpriaRepository
